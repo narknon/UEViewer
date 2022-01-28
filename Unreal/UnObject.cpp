@@ -898,7 +898,7 @@ no_net_index:
 		return;
 
 #if UNREAL4
-	if ((Ar.Game >= GAME_UE4(26)) && (Package->Summary.PackageFlags & PKG_UnversionedProperties))
+	if (Package->Summary.PackageFlags & PKG_UnversionedProperties)
 	{
 	#if DEBUG_PROPS
 		DUMP_ARC_BYTES(Ar, 512, "ALL");
@@ -917,7 +917,7 @@ no_net_index:
 		// PossiblySerializeObjectGuid()
 		int bSerializeGuid;
 		Ar << bSerializeGuid;
-		if (Ar.Game >= GAME_UE4(26) && (Package->Summary.PackageFlags & PKG_UnversionedProperties))
+		if (Package->Summary.PackageFlags & PKG_UnversionedProperties)
 		{
 			if (bSerializeGuid != 0 && bSerializeGuid != 1)
 				appError("Unversioned properties problem");
