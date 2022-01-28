@@ -1030,6 +1030,7 @@ public:
 #define REGISTER_MESH_CLASSES_U4 \
 	REGISTER_CLASS(USkeleton) \
 	REGISTER_CLASS(FBoneReference) \
+	REGISTER_CLASS(FTriangleSortSettings) \
 	REGISTER_CLASS(FSkeletalMeshLODInfo) \
 	REGISTER_CLASS(FSkeletalMeshSamplingRegionBoneFilter) \
 	REGISTER_CLASS(FSkeletalMeshSamplingRegionMaterialFilter) \

@@ -226,6 +226,12 @@ BEGIN("UStreamableRenderAsset")
 	DROP_INT8(4, 5, 6, 7, 8, 9)
 END
 
+BEGIN("FTriangleSortSettings")
+	MAP(TriangleSorting, 0)
+	MAP(CustomLeftRightAxis, 1)
+	MAP(CustomLeftRightBoneName, 2)
+END
+
 BEGIN("FSkeletalMeshLODInfo")
 	DROP_INT64(0)						// FPerPlatformFloat ScreenSize
 	MAP(LODHysteresis, 1)

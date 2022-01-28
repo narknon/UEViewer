@@ -110,6 +110,23 @@ public:
 // forwards (structures are declared in cpp)
 struct FStaticLODModel3;
 
+struct FTriangleSortSettings
+{
+	DECLARE_STRUCT(FTriangleSortSettings);
+	byte TriangleSorting;
+	byte CustomLeftRightAxis;
+	FName CustomLeftRightBoneName;
+
+	FTriangleSortSettings();
+	~FTriangleSortSettings();
+
+	BEGIN_PROP_TABLE
+		PROP_BYTE(TriangleSorting)
+		PROP_BYTE(CustomLeftRightAxis)
+		PROP_NAME(CustomLeftRightBoneName)
+	END_PROP_TABLE
+};
+
 
 struct FSkeletalMeshLODInfo
 {

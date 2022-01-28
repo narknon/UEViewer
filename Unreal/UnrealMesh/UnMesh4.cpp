@@ -297,6 +297,9 @@ struct FStaticMeshVertexBuffer4
 	USkeletalMesh
 -----------------------------------------------------------------------------*/
 
+FTriangleSortSettings::FTriangleSortSettings() {}
+FTriangleSortSettings::~FTriangleSortSettings() {}
+
 // FSkeletalMeshLODInfo is in cpp file to let use forward declaration of some types
 FSkeletalMeshLODInfo::FSkeletalMeshLODInfo()
 {}
