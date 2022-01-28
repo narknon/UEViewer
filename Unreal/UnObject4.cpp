@@ -249,7 +249,19 @@ BEGIN("FSkeletalMeshBuildSettings")
 END
 
 BEGIN("FSkeletalMeshOptimizationSettings")
-	DROP_INT8(0, 6, 7, 8, 9, 10, 11, 12, 16, 18, 19)
+	MAP(ReductionMethod, 0)
+	MAP(NumOfTrianglesPercentage, 1)
+	MAP(MaxDeviationPercentage, 2)
+	MAP(WeldingThreshold, 3)
+	MAP(bRecalcNormals, 4)
+	MAP(NormalsThreshold, 5)
+	MAP(SilhouetteImportance, 6)
+	MAP(TextureImportance, 7)
+	MAP(ShadingImportance, 8)
+	MAP(SkinningImportance, 9)
+	MAP(BoneReductionRatio, 10)
+	MAP(MaxBonesPerVertex, 11)
+	MAP(BaseLOD, 13)
 END
 
 BEGIN("FSkinWeightProfileInfo")

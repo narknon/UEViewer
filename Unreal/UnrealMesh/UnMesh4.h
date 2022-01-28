@@ -292,12 +292,6 @@ struct FSkeletalMeshBuildSettings
 	DUMMY_PROP_TABLE
 };
 
-struct FSkeletalMeshOptimizationSettings
-{
-	DECLARE_STRUCT(FSkeletalMeshOptimizationSettings);
-	DUMMY_PROP_TABLE
-};
-
 struct FSkinWeightProfileInfo
 {
 	DECLARE_STRUCT(FSkinWeightProfileInfo);

@@ -127,6 +127,43 @@ struct FTriangleSortSettings
 	END_PROP_TABLE
 };
 
+struct FSkeletalMeshOptimizationSettings
+{
+	DECLARE_STRUCT(FSkeletalMeshOptimizationSettings);
+public:
+	byte ReductionMethod;
+	float NumOfTrianglesPercentage;
+	float MaxDeviationPercentage;
+	float WeldingThreshold;
+	bool bRecalcNormals;
+	float NormalsThreshold;
+	byte SilhouetteImportance;
+	byte TextureImportance;
+	byte ShadingImportance;
+	byte SkinningImportance;
+	float BoneReductionRatio;
+	int32 MaxBonesPerVertex;
+	int32 BaseLOD;
+
+	FSkeletalMeshOptimizationSettings();
+	~FSkeletalMeshOptimizationSettings();
+
+	BEGIN_PROP_TABLE
+		PROP_BYTE(ReductionMethod)
+		PROP_FLOAT(NumOfTrianglesPercentage)
+		PROP_FLOAT(MaxDeviationPercentage)
+		PROP_FLOAT(WeldingThreshold)
+		PROP_BOOL(bRecalcNormals)
+		PROP_FLOAT(NormalsThreshold)
+		PROP_BYTE(SilhouetteImportance)
+		PROP_BYTE(TextureImportance)
+		PROP_BYTE(ShadingImportance)
+		PROP_BYTE(SkinningImportance)
+		PROP_FLOAT(BoneReductionRatio)
+		PROP_INT(MaxBonesPerVertex)
+		PROP_INT(BaseLOD)
+	END_PROP_TABLE
+};
 
 struct FSkeletalMeshLODInfo
 {
