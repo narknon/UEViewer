@@ -1924,7 +1924,7 @@ void CTypeInfo::SerializeUnversionedProperties4(FArchive& Ar, void* ObjectData) 
 			Ar << PROP(FLinearColor);
 			PROP_DBG("%g %g %g %g", FCOLOR_ARG(PROP(FLinearColor)));
 		}
-		else if (Prop->TypeName[0] == '#' && Prop->TypeName[1] == 'E')
+		else if (COMPARE_TYPE(Prop->TypeName, "byte") || (Prop->TypeName[0] == '#' && Prop->TypeName[1] == 'E'))
 		{
 			// enum, serialize as byte
 			uint8& p = PROP(uint8);
