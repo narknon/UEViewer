@@ -110,11 +110,14 @@ BEGIN("USkeletalMesh4")
 	DROP_VECTOR3(3)						// PositiveBoundsExtension
 	DROP_VECTOR3(4)						// PositiveBoundsExtension
 	MAP(Materials, 5)
-	MAP(LODInfo, 7)
 	DROP_INT64(8)						// FPerPlatformInt MinLod
 	DROP_INT64(9)						// FPerPlatformBool DisableBelowMinLodStripping
-	DROP_INT8(10, 11, 12, 13, 14, 16)
+	MAP(LODInfo, 10)
+	DROP_INT8(7, 12, 13, 14)
 	MAP(bHasVertexColors, 15)
+	MAP(PhysicsAsset, 16)
+	MAP(ShadowPhysicsAsset, 17)
+	MAP(bCastCapsuleShadow, 19)
 	MAP(MorphTargets, 21)
 	DROP_OBJ_ARRAY(23)					// TArray<UClothingAssetBase*> MeshClothingAssets
 	MAP(SamplingInfo, 24)

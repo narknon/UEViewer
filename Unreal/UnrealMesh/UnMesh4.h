@@ -324,10 +324,12 @@ public:
 #endif
 	FSkeletalMeshSamplingInfo SamplingInfo;
 	TArray<FSkinWeightProfileInfo> SkinWeightProfiles;
-
+	
 	// properties
 	bool					bHasVertexColors;
-
+	UObject* PhysicsAsset;
+	UObject* ShadowPhysicsAsset;
+	bool     bCastCapsuleShadow;
 	CSkeletalMesh			*ConvertedMesh;
 
 	BEGIN_PROP_TABLE
@@ -344,8 +346,9 @@ public:
 		PROP_DROP(bHasBeenSimplified)
 		PROP_DROP(SamplingInfo)
 		PROP_DROP(MinLod)
-		PROP_DROP(PhysicsAsset)
-		PROP_DROP(ShadowPhysicsAsset)
+		PROP_OBJ(PhysicsAsset)
+		PROP_OBJ(ShadowPhysicsAsset)
+		PROP_BOOL(bCastCapsuleShadow)
 	END_PROP_TABLE
 
 	USkeletalMesh4();
