@@ -233,15 +233,19 @@ BEGIN("FTriangleSortSettings")
 END
 
 BEGIN("FSkeletalMeshLODInfo")
-	DROP_INT64(0)						// FPerPlatformFloat ScreenSize
+	MAP(DisplayFactor, 0)						// FPerPlatformFloat ScreenSize
 	MAP(LODHysteresis, 1)
 	MAP(LODMaterialMap, 2)
 	MAP(BuildSettings, 3)
-	MAP(ReductionSettings, 4)
-	MAP(BonesToRemove, 5)
-	MAP(BonesToPrioritize, 6)
+	MAP(TriangleSortSettings, 4)
+	MAP(bHasBeenSimplified, 5)
+	MAP(ReductionSettings, 6)
+	MAP(BonesToRemove, 8)
+	MAP(BakePose, 9)
 	MAP(SourceImportFilename, 10)
-	DROP_INT8(11, 12, 13, 14, 15)
+	MAP(bHasPerLODVertexColors, 11)
+	DROP_INT8(12, 13, 14, 15)
+	MAP(BonesToPrioritize, 16)
 END
 
 BEGIN("FSkeletalMeshBuildSettings")

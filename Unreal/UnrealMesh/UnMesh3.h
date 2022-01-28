@@ -171,11 +171,16 @@ struct FSkeletalMeshLODInfo
 	float					DisplayFactor;
 	float					LODHysteresis;
 	TArray<int>				LODMaterialMap;
+	TArray<FTriangleSortSettings> TriangleSortSettings;
 	TArray<bool>			bEnableShadowCasting;
 #if UNREAL4
 	FString					SourceImportFilename;
 	TArray<struct FBoneReference> BonesToRemove;
 	TArray<struct FBoneReference> BonesToPrioritize;
+	UObject* BakePose;
+	bool bHasPerLODVertexColors;
+	bool bHasBeenSimplified;
+	FSkeletalMeshOptimizationSettings ReductionSettings;
 #endif
 
 #if UNREAL4
@@ -189,10 +194,10 @@ struct FSkeletalMeshLODInfo
 		PROP_FLOAT(DisplayFactor)
 		PROP_FLOAT(LODHysteresis)
 		PROP_ARRAY(LODMaterialMap, PropType::Int)
+		PROP_ARRAY(TriangleSortSettings, "FTriangleSortSettings")
 		PROP_ARRAY(bEnableShadowCasting, PropType::Bool)
 		PROP_DROP(TriangleSorting)
-		PROP_DROP(TriangleSortSettings)
-		PROP_DROP(bHasBeenSimplified)
+		PROP_BOOL(bHasBeenSimplified)
 #if FRONTLINES
 		PROP_DROP(bExcludeFromConsoles)
 		PROP_DROP(bCanRemoveForLowDetail)
@@ -211,14 +216,14 @@ struct FSkeletalMeshLODInfo
 		PROP_DROP(OptimizationSettings)
 		PROP_DROP(RemovedBones)
 		PROP_STRING(SourceImportFilename)
-		PROP_DROP(bHasPerLODVertexColors)
+		PROP_BOOL(bHasPerLODVertexColors)
 		PROP_DROP(bAllowCPUAccess)
 		PROP_DROP(bSupportUniformlyDistributedSampling)
 		PROP_DROP(WeightOfPrioritization)
-		PROP_DROP(BakePose)
+		PROP_OBJ(BakePose)
 		PROP_DROP(BakePoseOverride)
 		PROP_DROP(BuildSettings, "FSkeletalMeshBuildSettings")
-		PROP_DROP(ReductionSettings, "FSkeletalMeshOptimizationSettings")
+		PROP_STRUC(ReductionSettings, FSkeletalMeshOptimizationSettings)
 		PROP_DROP(SkinCacheUsage)
 #endif
 	END_PROP_TABLE
