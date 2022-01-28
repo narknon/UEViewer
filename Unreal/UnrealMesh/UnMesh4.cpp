@@ -793,6 +793,16 @@ struct FSkelMeshSection4
 					Ar.Seek(Ar.Tell() + unk2 * 24);
 				}
 			}
+
+			// FF7R
+			{
+				int32 unk1, unk2;
+				Ar << unk1 << unk2;
+				if (unk1)
+				{
+					Ar.Seek(Ar.Tell() + unk2 * 16);
+				}
+			}
 #endif // KH3
 			// UE4.19+
 			//todo: this code is never reached? (this function is for pre-4.19)
