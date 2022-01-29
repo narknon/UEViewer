@@ -164,14 +164,14 @@ END
 // UTexture2D
 BEGIN("UTexture2D")
 	DROP_INT8(2)						// uint8 bTemporarilyDisableStreaming:1
-	DROP_INT8(3)						// TEnumAsByte<enum TextureAddress> AddressX
-	DROP_INT8(4)						// TEnumAsByte<enum TextureAddress> AddressY
-	DROP_INT64(5)						// FIntPoint ImportedSize
+	DROP_INT64(3)						// FIntPoint ImportedSize
+	DROP_INT8(4)						// TEnumAsByte<enum TextureAddress> AddressX
+	DROP_INT8(5)						// TEnumAsByte<enum TextureAddress> AddressY
 END
 
 BEGIN("UTexture3")
-	DROP_VECTOR4(0)						// FGuid LightingGuid
-	DROP_INT8(2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13)
+	DROP_VECTOR4(11)						// FGuid LightingGuid
+	DROP_INT8(2, 3, 4, 5, 7, 8, 9, 10, 12, 13)
 	DROP_INT64(6)						// FPerPlatformFloat Downscale
 	DROP_OBJ_ARRAY(14)					// AssetUserData
 END
