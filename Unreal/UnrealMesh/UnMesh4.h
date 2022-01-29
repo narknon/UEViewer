@@ -86,6 +86,11 @@ struct FCurveMetaData
 #if KH3
 			if (Ar.Game == GAME_KH3) Ar.Seek(Ar.Tell() + 3); // MaxLOD is int32 here
 #endif
+			// FF7R
+			{
+				FName unk1, unk2;
+				Ar << unk1 << unk2;
+			}
 		}
 		return Ar;
 	}
