@@ -1452,8 +1452,40 @@ struct FStaticLODModel4
 				}
 #endif // SEAOFTHIEVES
 
-				if (!StripFlags.IsClassDataStripped(CDSF_AdjacencyData))
-					Ar << Lod.AdjacencyIndexBuffer;
+				// FF7R
+				{
+					int32 check;
+					Ar << check;
+					if (check < 10) return Ar;
+					else
+					{
+						Ar.Seek(Ar.Tell() - 4);
+						Ar << Lod.AdjacencyIndexBuffer;
+					}
+
+					Ar << check;
+					if (check == 0 || check == 1) return Ar;
+					else Ar.Seek(Ar.Tell() - 4);
+
+					FStripDataFlags UnkStripFlags(Ar);
+					if (UnkStripFlags.IsClassDataStripped(CDSF_AdjacencyData))
+					{
+						Ar.Seek(Ar.Tell() - 2);
+						return Ar;
+					}
+					int32 UnkElementSize, UnkCount;
+					Ar << UnkElementSize << UnkCount;
+					if (UnkCount < 30)
+					{
+						Ar.Seek(Ar.Tell() - 10);
+						return Ar;
+					}
+
+					Ar.Seek(Ar.Tell() + UnkElementSize * UnkCount); // ClothVertexBuffer?
+
+					Ar << Lod.ColorVertexBuffer;
+					return Ar;
+				}
 
 #if FABLE
 				if (Ar.Game == GAME_FableLegends)
