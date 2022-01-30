@@ -171,9 +171,9 @@ END
 
 BEGIN("UTexture3")
 	DROP_VECTOR4(11)						// FGuid LightingGuid
-	DROP_INT8(2, 3, 4, 5, 7, 8, 9, 10, 12, 13)
-	DROP_INT64(6)						// FPerPlatformFloat Downscale
-	DROP_OBJ_ARRAY(14)					// AssetUserData
+	DROP_INT8(2, 3, 4, 5, 7, 8, 9, 10, 12, 13, 14)
+	DROP_INT64(11)						// FPerPlatformFloat Downscale
+	DROP_OBJ_ARRAY(15)					// AssetUserData
 END
 
 // UMaterialInstance
