@@ -489,6 +489,7 @@ enum EGame
 		GAME_KH3 = GAME_UE4(17)+2, // 17..18 (16 - crash anim, 19 - new SkelMesh format, not matching)
 		// 4.18
 		GAME_AscOne = GAME_UE4(18)+1,
+		GAME_FF7R = GAME_UE4(18)+2,
 		// 4.19
 		GAME_Paragon = GAME_UE4(19)+1,
 		// 4.20
@@ -1346,6 +1347,38 @@ struct FBoxSphereBounds
 
 
 #if UNREAL4
+
+#if FF7R
+
+struct FMeshNearFarFadeInfo
+{
+	bool		Enabled;
+	bool		bOverride_Enabled;
+	bool		bOverride_BoundExtendOffset;
+	bool		bOverride_NearFadeOutDistance;
+	bool		bOverride_NearFadeInMargin;
+	bool		bOverride_FarFadeOutDistance;
+	bool		bOverride_FarFadeInMargin;
+	bool		bOverride_FadeInTimeLimit;
+	float		BoundExtendOffset;
+	float		NearFadeOutDistance;
+	float		NearFadeInMargin;
+	float		FarFadeOutDistance;
+	float		FarFadeInMargin;
+	float		FadeInTimeLimit;
+	uint8		Padding1;
+	uint16		Padding2;
+
+	friend FArchive& operator<<(FArchive &Ar, FMeshNearFarFadeInfo &NFF)
+	{
+		return Ar << NFF.Enabled << NFF.bOverride_Enabled << NFF.bOverride_BoundExtendOffset << NFF.bOverride_NearFadeOutDistance <<
+			NFF.bOverride_NearFadeInMargin << NFF.bOverride_FarFadeOutDistance << NFF.bOverride_FarFadeInMargin << NFF.bOverride_FadeInTimeLimit <<
+				NFF.BoundExtendOffset << NFF.NearFadeOutDistance << NFF.NearFadeInMargin << NFF.FarFadeOutDistance << NFF.FarFadeInMargin <<
+					NFF.FadeInTimeLimit << NFF.Padding1 << NFF.Padding2;
+	}
+};
+
+#endif // FF7R
 
 struct FIntPoint
 {

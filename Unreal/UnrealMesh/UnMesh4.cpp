@@ -793,17 +793,19 @@ struct FSkelMeshSection4
 					Ar.Seek(Ar.Tell() + unk2 * 24);
 				}
 			}
-
-			// FF7R
+#endif // KH3
+#if FF7R
+			if (Ar.Game == GAME_FF7R)
 			{
-				int32 unk1, unk2;
-				Ar << unk1 << unk2;
+				int32 bKDIFlag, KDIVertexNumber;
+				Ar << bKDIFlag << KDIVertexNumber;
 				if (unk1)
 				{
-					Ar.Seek(Ar.Tell() + unk2 * 16);
+					Ar.Seek(Ar.Tell() + KDIVertexNumber * 16);
 				}
 			}
-#endif // KH3
+#endif // FF7R
+			
 			// UE4.19+
 			//todo: this code is never reached? (this function is for pre-4.19)
 			//todo: review - may be the function is still used for editor data? Should update function comment.
@@ -1452,7 +1454,8 @@ struct FStaticLODModel4
 				}
 #endif // SEAOFTHIEVES
 
-				// FF7R
+#if FF7R
+				if (Ar.Game == GAME_FF7R)
 				{
 					int32 check;
 					Ar << check;
@@ -1486,6 +1489,7 @@ struct FStaticLODModel4
 					Ar << Lod.ColorVertexBuffer;
 					return Ar;
 				}
+#endif // FF7R
 
 #if FABLE
 				if (Ar.Game == GAME_FableLegends)

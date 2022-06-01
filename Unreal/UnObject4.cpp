@@ -117,7 +117,9 @@ BEGIN("USkeletalMesh4")
 	MAP(bHasVertexColors, 15)
 	MAP(PhysicsAsset, 16)
 	MAP(ShadowPhysicsAsset, 17)
-	MAP(bCastCapsuleShadow, 19)
+	VERSION_BLOCK(GAME_FF7R(18)+2)
+		MAP(bCastCapsuleShadow, 19) // FF7R
+	VERSION_BLOCK(0)
 	MAP(MorphTargets, 21)
 	DROP_OBJ_ARRAY(23)					// TArray<UClothingAssetBase*> MeshClothingAssets
 	MAP(SamplingInfo, 24)

@@ -51,3 +51,7 @@ Tools/PackageExtract/oo2core*.dll
 
 # PackageExtract - ignore all extracted stuff
 Tools/PackageExtract/**/
+Tools/UITest/vs/.idea/.idea.UI_Dev/.idea/vcs.xml
+Tools/UITest/vs/.idea/.idea.UI_Dev/.idea/encodings.xml
+Tools/UITest/vs/.idea/.idea.UI_Dev/.idea/.name
+Tools/UITest/vs/.idea/.idea.UI_Dev/.idea/indexLayout.xml

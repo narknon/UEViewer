@@ -86,11 +86,14 @@ struct FCurveMetaData
 #if KH3
 			if (Ar.Game == GAME_KH3) Ar.Seek(Ar.Tell() + 3); // MaxLOD is int32 here
 #endif
-			// FF7R
-			{
+#if FF7R
+			if (Ar.Game == GAME_FF7R) Ar.Seek(Ar.Tell() + 3); // MaxLOD is int32 here
+			
+			/*{
 				FName unk1, unk2;
 				Ar << unk1 << unk2;
-			}
+			}*/
+#endif // FF7R
 		}
 		return Ar;
 	}
@@ -310,6 +313,9 @@ class USkeletalMesh4 : public UObject
 {
 	DECLARE_CLASS(USkeletalMesh4, UObject);
 public:
+#if FF7R
+	FMeshNearFarFadeInfo	NearFarFadeInfo;
+#endif // FF7R
 	FBoxSphereBounds		Bounds;
 	TArray<FSkeletalMaterial> Materials;
 	FReferenceSkeleton		RefSkeleton;
@@ -318,6 +324,9 @@ public:
 	TArray<FSkeletalMeshLODInfo> LODInfo;
 	TArray<UMorphTarget*>	MorphTargets;
 	TArray<USkeletalMeshSocket*> Sockets;
+#if FF7R
+	float					ScaleFromBaseMesh;
+#endif // FF7R
 #if BORDERLANDS3
 	byte					NumVertexColorChannels;
 #endif
@@ -325,10 +334,10 @@ public:
 	TArray<FSkinWeightProfileInfo> SkinWeightProfiles;
 	
 	// properties
-	bool					bHasVertexColors;
-	UObject* PhysicsAsset;
-	UObject* ShadowPhysicsAsset;
-	bool     bCastCapsuleShadow;
+	bool		bHasVertexColors;
+	UObject*	PhysicsAsset;
+	UObject*	ShadowPhysicsAsset;
+	bool		bCastCapsuleShadow;
 	CSkeletalMesh			*ConvertedMesh;
 
 	BEGIN_PROP_TABLE
@@ -337,6 +346,9 @@ public:
 		PROP_ARRAY(LODInfo, "FSkeletalMeshLODInfo")
 		PROP_ARRAY(MorphTargets, PropType::UObject)
 		PROP_ARRAY(Sockets, PropType::UObject)
+#if FF7R
+		PROP_DROP(ScaleFromBaseMesh)
+#endif
 		PROP_STRUC(SamplingInfo, FSkeletalMeshSamplingInfo)
 		PROP_ARRAY(SkinWeightProfiles, "FSkinWeightProfileInfo")
 #if BORDERLANDS3
@@ -345,9 +357,11 @@ public:
 		PROP_DROP(bHasBeenSimplified)
 		PROP_DROP(SamplingInfo)
 		PROP_DROP(MinLod)
-		PROP_OBJ(PhysicsAsset)
-		PROP_OBJ(ShadowPhysicsAsset)
-		PROP_BOOL(bCastCapsuleShadow)
+		PROP_DROP(PhysicsAsset)
+		PROP_DROP(ShadowPhysicsAsset)
+#if FF7R	
+		PROP_DROP(bCastCapsuleShadow)
+#endif // FF7R	
 	END_PROP_TABLE
 
 	USkeletalMesh4();

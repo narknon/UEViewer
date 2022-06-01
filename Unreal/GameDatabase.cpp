@@ -407,6 +407,9 @@ const GameInfo GListOfGames[] = {
 #	if KH3
 		G("Kingdom Hearts 3", kh3, GAME_KH3),
 #	endif
+#	if FF7R
+	G("Final Fantasy 7 Remake", ff7r, GAME_FF7R),
+#	endif
 #	if JEDI
 		G("Star Wars Jedi: Fallen Order", jedi, GAME_Jedi),
 #	endif

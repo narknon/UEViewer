@@ -57,15 +57,16 @@ void FTexture2DMipMap::Serialize4(FArchive &Ar, FTexture2DMipMap& Mip)
 		int32 SizeZ;
 		Ar << SizeZ;
 	}
-
-	// FF7R
+#if FF7R
+	if (Ar.Game == GAME_FF7R)
 	{
 		if (Mip.Data.BulkDataFlags == 0x40) {
 			int32 unk1, unk2;
 			Ar << unk1 << unk2;
 		}
 	}
-
+#endif // FF7R
+	
 after_mip_size:
 	if (Ar.ArVer >= VER_UE4_TEXTURE_DERIVED_DATA2 && !cooked)
 	{
@@ -113,7 +114,8 @@ struct FTexturePlatformData
 		Ar << FirstMip;					// only for cooked, but we don't read FTexturePlatformData for non-cooked textures
 		DBG("   SizeX=%d SizeY=%d NumSlices=%d PixelFormat=%s FirstMip=%d\n", D.SizeX, D.SizeY, D.NumSlices, *D.PixelFormat, FirstMip);
 
-		// FF7R
+#if FF7R
+		if (Ar.Game == GAME_FF7R)
 		{
 			int32 unk1, unk2, unk3;
 			Ar << unk1 << unk2 << unk3;
@@ -131,7 +133,7 @@ struct FTexturePlatformData
 				D.Mips.Add(Mip);
 			}
 		}
-
+#endif // FF7R
 		if (Ar.Game >= GAME_UE4(23))
 		{
 			bool bIsVirtual;
