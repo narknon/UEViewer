@@ -730,10 +730,35 @@ public:
 	float					SequenceLength;
 	float					RateScale;
 
+// FF7R Start
+	bool bFireNotifyOnPlayingBackwards; 
+	EAnimSequencePreparationTurnType PreparationTurnType;
+	float PreparationTurnPlayRate;
+	float BeginBlendTime;
+	float ContinuationBlendTime;
+	float EndBlendTime;
+	bool bOverrideUpperBodyBlendTime;
+	float BeginUpperBodyBlendTime;
+	float ContinuationUpperBodyBlendTime;
+	bool bOverrideFieldActionBlendTime;
+	bool bDisableAutoFacial; 
+// FF7R End
+	
 	BEGIN_PROP_TABLE
 		PROP_ARRAY(Notifies, "FAnimNotifyEvent")
 		PROP_FLOAT(SequenceLength)
 		PROP_FLOAT(RateScale)
+		PROP_BOOL(bFireNotifyOnPlayingBackwards)
+		PROP_ENUM2(PreparationTurnType, EAnimSequencePreparationTurnType)
+		PROP_FLOAT(PreparationTurnPlayRate)
+		PROP_FLOAT(BeginBlendTime)
+		PROP_FLOAT(ContinuationBlendTime)
+		PROP_FLOAT(EndBlendTime)
+		PROP_BOOL(bOverrideUpperBodyBlendTime)
+		PROP_FLOAT(BeginUpperBodyBlendTime)
+		PROP_FLOAT(ContinuationUpperBodyBlendTime)
+		PROP_BOOL(bOverrideFieldActionBlendTime)
+		PROP_BOOL(bDisableAutoFacial)
 		PROP_STRUC(RawCurveData, FRawCurveTracks)
 	END_PROP_TABLE
 
@@ -743,6 +768,17 @@ public:
 
 	virtual void Serialize(FArchive& Ar);
 };
+
+// FF7R
+enum class EAnimSequencePreparationTurnType
+{
+	None,
+	Idle,
+	Walk,
+	Run,
+	Dash,
+};
+
 
 enum EAnimInterpolationType
 {

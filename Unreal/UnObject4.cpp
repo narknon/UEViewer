@@ -107,8 +107,8 @@ BEGIN("USkeletalMesh4")
 		DROP_INT8(21)					// uint8 bSupportRayTracing
 	VERSION_BLOCK(0)
 	VERSION_BLOCK(GAME_FF7R(18)+2)
-		DROP(ScaleFromBaseMesh, 27)
-		DROP(bCastCapsuleShadow, 19) // FF7R
+		DROP_INT32(ScaleFromBaseMesh, 27)
+		DROP_BOOL(bCastCapsuleShadow, 19) // FF7R
 	VERSION_BLOCK(0)
 	MAP(Skeleton, 0)
 	DROP_VECTOR3(3)						// PositiveBoundsExtension
@@ -119,8 +119,8 @@ BEGIN("USkeletalMesh4")
 	MAP(LODInfo, 10)
 	DROP_INT8(7, 12, 13, 14)
 	MAP(bHasVertexColors, 15)
-	DROP(PhysicsAsset, 16)
-	DROP(ShadowPhysicsAsset, 17)
+	MAP(PhysicsAsset, 16)
+	MAP(ShadowPhysicsAsset, 17)
 	MAP(MorphTargets, 21)
 	DROP_OBJ_ARRAY(23)					// TArray<UClothingAssetBase*> MeshClothingAssets
 	MAP(SamplingInfo, 24)
@@ -143,6 +143,9 @@ END
 BEGIN("UAnimSequence4")
 	VERSION_BLOCK(GAME_UE4(27))
 		MAP(RetargetSourceAssetReferencePose, 9)
+	VERSION_BLOCK(0)
+	VERSION_BLOCK(GAME_FF7R(18)+2)
+		DROP_INT8(9)
 	VERSION_BLOCK(0)
 	MAP(NumFrames, 0)
 	MAP(TrackToSkeletonMapTable, 1)
