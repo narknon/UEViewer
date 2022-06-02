@@ -799,7 +799,7 @@ struct FSkelMeshSection4
 			{
 				int32 bKDIFlag, KDIVertexNumber;
 				Ar << bKDIFlag << KDIVertexNumber;
-				if (unk1)
+				if (bKDIFlag)
 				{
 					Ar.Seek(Ar.Tell() + KDIVertexNumber * 16);
 				}

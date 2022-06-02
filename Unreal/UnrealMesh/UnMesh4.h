@@ -973,10 +973,13 @@ public:
 	EAdditiveBasePoseType	RefPoseType;
 	UAnimSequence4*			RefPoseSeq;
 	int32					RefFrameIndex;
+	int                     EncodingPkgVersion; 
 	FName					RetargetSource;
 	TArray<FTransform>		RetargetSourceAssetReferencePose;
 	bool					bEnableRootMotion;
+	ERootMotionInitialTransform RootMotionInitialTransform; // FF7R
 	TArray<FAnimSyncMarker>	AuthoredSyncMarkers;
+	bool bIgnoreTranslationRetargeting; // FF7R
 	TArray<FBakedCustomAttributePerBoneData> BakedPerBoneCustomAttributeData;
 
 	BEGIN_PROP_TABLE
@@ -999,7 +1002,9 @@ public:
 		PROP_INT(RefFrameIndex)
 		PROP_ARRAY(RetargetSourceAssetReferencePose, "FTransform")
 		PROP_BOOL(bEnableRootMotion)
+		PROP_ENUM2(RootMotionInitialTransform, ERootMotionInitialTransform)
 		PROP_ARRAY(AuthoredSyncMarkers, "FAnimSyncMarker")
+		PROP_BOOL(bIgnoreTranslationRetargeting)
 		PROP_ARRAY(BakedPerBoneCustomAttributeData, "FBakedCustomAttributePerBoneData")
 	END_PROP_TABLE
 
