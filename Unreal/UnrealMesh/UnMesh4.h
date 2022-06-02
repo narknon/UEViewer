@@ -242,6 +242,7 @@ struct FSkeletalMeshSamplingRegionMaterialFilter
 
 struct FMeshNearFarFadeInfo
 {
+	DECLARE_STRUCT(FMeshNearFarFadeInfo);
 	bool		Enabled;
 	bool		bOverride_Enabled;
 	bool		bOverride_BoundExtendOffset;
@@ -256,16 +257,32 @@ struct FMeshNearFarFadeInfo
 	float		FarFadeOutDistance;
 	float		FarFadeInMargin;
 	float		FadeInTimeLimit;
-	uint8		Padding1;
-	uint16		Padding2;
+	BEGIN_PROP_TABLE
+		PROP_DROP(Enabled)
+		PROP_DROP(bOverride_Enabled)
+		PROP_DROP(bOverride_BoundExtendOffset)
+		PROP_DROP(bOverride_NearFadeOutDistance)
+		PROP_DROP(bOverride_NearFadeInMargin)
+		PROP_DROP(bOverride_FarFadeOutDistance)
+		PROP_DROP(bOverride_FarFadeInMargin)
+		PROP_DROP(bOverride_FadeInTimeLimit)
+		PROP_DROP(BoundExtendOffset)
+		PROP_DROP(NearFadeOutDistance)
+		PROP_DROP(NearFadeInMargin)
+		PROP_DROP(FarFadeOutDistance)
+		PROP_DROP(FarFadeInMargin)
+		PROP_DROP(FadeInTimeLimit)
+	END_PROP_TABLE
 
-	friend FArchive& operator<<(FArchive &Ar, FMeshNearFarFadeInfo &NFF)
+
+	
+	/*friend FArchive& operator<<(FArchive &Ar, FMeshNearFarFadeInfo &NFF)
 	{
 		return Ar << NFF.Enabled << NFF.bOverride_Enabled << NFF.bOverride_BoundExtendOffset << NFF.bOverride_NearFadeOutDistance <<
 			NFF.bOverride_NearFadeInMargin << NFF.bOverride_FarFadeOutDistance << NFF.bOverride_FarFadeInMargin << NFF.bOverride_FadeInTimeLimit <<
 				NFF.BoundExtendOffset << NFF.NearFadeOutDistance << NFF.NearFadeInMargin << NFF.FarFadeOutDistance << NFF.FarFadeInMargin <<
 					NFF.FadeInTimeLimit << NFF.Padding1 << NFF.Padding2;
-	}
+	}*/
 };
 
 #endif // FF7R
