@@ -238,6 +238,38 @@ struct FSkeletalMeshSamplingRegionMaterialFilter
 	END_PROP_TABLE
 };
 
+#if FF7R
+
+struct FMeshNearFarFadeInfo
+{
+	bool		Enabled;
+	bool		bOverride_Enabled;
+	bool		bOverride_BoundExtendOffset;
+	bool		bOverride_NearFadeOutDistance;
+	bool		bOverride_NearFadeInMargin;
+	bool		bOverride_FarFadeOutDistance;
+	bool		bOverride_FarFadeInMargin;
+	bool		bOverride_FadeInTimeLimit;
+	float		BoundExtendOffset;
+	float		NearFadeOutDistance;
+	float		NearFadeInMargin;
+	float		FarFadeOutDistance;
+	float		FarFadeInMargin;
+	float		FadeInTimeLimit;
+	uint8		Padding1;
+	uint16		Padding2;
+
+	friend FArchive& operator<<(FArchive &Ar, FMeshNearFarFadeInfo &NFF)
+	{
+		return Ar << NFF.Enabled << NFF.bOverride_Enabled << NFF.bOverride_BoundExtendOffset << NFF.bOverride_NearFadeOutDistance <<
+			NFF.bOverride_NearFadeInMargin << NFF.bOverride_FarFadeOutDistance << NFF.bOverride_FarFadeInMargin << NFF.bOverride_FadeInTimeLimit <<
+				NFF.BoundExtendOffset << NFF.NearFadeOutDistance << NFF.NearFadeInMargin << NFF.FarFadeOutDistance << NFF.FarFadeInMargin <<
+					NFF.FadeInTimeLimit << NFF.Padding1 << NFF.Padding2;
+	}
+};
+
+#endif // FF7R
+
 struct FSkeletalMeshSamplingRegion
 {
 	DECLARE_STRUCT(FSkeletalMeshSamplingRegion);
