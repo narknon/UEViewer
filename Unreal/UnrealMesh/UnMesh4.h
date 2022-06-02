@@ -818,8 +818,8 @@ public:
 	virtual void Serialize(FArchive& Ar);
 };
 
-// FF7R
-enum class EAnimSequencePreparationTurnType
+
+enum class EAnimSequencePreparationTurnType // FF7R
 {
 	None,
 	Idle,
